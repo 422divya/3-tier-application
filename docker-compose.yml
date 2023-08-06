@@ -26,6 +26,12 @@ services:
   postgresldb:
     container_name: db
     image: postgres:11.2-alpine
+    environment:
+      POSTGRES_USER: demo_user
+      POSTGRES_PASSWORD: demo_user
+      POSTGRES_DB: demo_db
+    volumes:
+        - ./init_sql_scripts/:/docker-entrypoint-initdb.d
     networks:
       - network-db
 

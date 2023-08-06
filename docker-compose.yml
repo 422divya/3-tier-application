@@ -2,7 +2,7 @@ version: 3
 services:
   front:
     container_name: front-end container
-    image: ./frontend
+    image: 422divya/frontend:NEW_IMAGE_TAG
     environment:
       - API_URL: http://api:3001/data
     depends_on:
@@ -14,7 +14,7 @@ services:
 
   backend:
     container_name: api
-    image: ./backend
+    image: 422divya/backend:NEW_IMAGE_TAG
     networks:
       - network-db
       - network-frontend

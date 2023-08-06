@@ -6,7 +6,7 @@ services:
     environment:
       - API_URL = http://api:3001/data
     depends_on:
-      - api
+      - backend
     networks:
       - network-frontend
     ports:

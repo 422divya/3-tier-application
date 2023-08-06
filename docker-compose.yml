@@ -1,0 +1,35 @@
+version: 3
+services:
+  front:
+    container_name: front-end container
+    image: ./frontend
+    environment:
+      - API_URL: http://api:3001/data
+    depends_on:
+      - api
+    networks:
+      - network-frontend
+    ports:
+      - 3000:3000
+
+  backend:
+    container_name: api
+    image: ./backend
+    networks:
+      - network-db
+      - network-frontend
+    environment:
+      - CONNECTION_STRING: postgres://demo_user:demo_user@db/demo_db
+    depends_on: 
+     - postgresldb
+
+  postgresldb:
+    container_name: db
+    image: postgres:11.2-alpine
+    networks:
+      - network-db
+
+
+networks:
+  network-db
+  network-frontend
